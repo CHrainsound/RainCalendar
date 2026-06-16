@@ -1,0 +1,14 @@
+msgid "appName"
+msgstr "Rain日历"
+
+msgid "holidayTitle"
+msgstr "节日日历"
+
+msgid "loading"
+msgstr "加载中..."
+
+msgid "error"
+msgstr "加载失败"
+
+msgid "noData"
+msgstr "暂无节日数据"

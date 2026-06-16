@@ -1,0 +1,14 @@
+msgid "appName"
+msgstr "Hello World Zepp OS4"
+
+msgid "holidayTitle"
+msgstr "Holiday Calendar"
+
+msgid "loading"
+msgstr "Loading..."
+
+msgid "error"
+msgstr "Failed to load"
+
+msgid "noData"
+msgstr "No holiday data"

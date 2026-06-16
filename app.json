@@ -1,0 +1,65 @@
+{
+  "configVersion": "v3",
+  "app": {
+    "appId": 20077,
+    "appName": "节日日历",
+    "appType": "app",
+    "version": {
+      "code": 1,
+      "name": "1.0.1"
+    },
+    "icon": "icon.png",
+    "vender": "zepp",
+    "description": "显示节日和节气的手表应用"
+  },
+  "permissions": [
+    "data:os.device.info",
+    "device:os.local_storage",
+    "data:os.network"
+  ],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "4.0",
+      "target": "4.0",
+      "minVersion": "4.0"
+    }
+  },
+  "debug": false,
+  "targets": {
+    "gt": {
+      "module": {
+        "page": {
+          "pages": [
+            "page/gt/holiday/index.page"
+          ]
+        }
+      },
+      "platforms": [
+        {
+          "st": "r"
+        },
+        {
+          "st": "s"
+        }
+      ],
+      "designWidth": 480
+    }
+  },
+  "i18n": {
+    "en-US": {
+      "appName": "RainCalendar",
+      "holidayTitle": "Holiday Calendar",
+      "loading": "Loading...",
+      "error": "Failed to load",
+      "noData": "No holiday data"
+    },
+    "zh-CN": {
+      "appName": "Rain日历",
+      "holidayTitle": "节日日历",
+      "loading": "加载中...",
+      "error": "加载失败",
+      "noData": "暂无节日数据"
+    }
+  },
+  "defaultLanguage": "en-US"
+}
