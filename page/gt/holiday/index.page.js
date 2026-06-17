@@ -1,6 +1,6 @@
 import ui from "@zos/ui";
 import { onDigitalCrown, offDigitalCrown, KEY_HOME } from "@zos/interaction";
-import { CALENDAR_STYLE, INFO_STYLE, BTN_PREV_STYLE, BTN_NEXT_STYLE } from "zosLoader:./index.page.[pf].layout.js";
+import { CALENDAR_STYLE, INFO_STYLE, BTN_PREV_STYLE, BTN_NEXT_STYLE, CALENDAR_GRID_START_Y, OFFSET_LAST_ROW } from "zosLoader:./index.page.[pf].layout.js";
 import { px } from "@zos/utils";
 
 const COLOR_HOLIDAY = 0xff4500;
@@ -265,7 +265,7 @@ function getHolidaysForYear(year) {
 const CELL_W = 62;
 const CELL_H = 50;
 const START_X = 240 - (CELL_W * 7) / 2 + 2;
-const START_Y = 90;
+const START_Y = CALENDAR_GRID_START_Y;
 
 Page({
   onInit() {
@@ -436,7 +436,7 @@ Page({
         const lunarRef = this.refs.lunars[dayIndex];
         const holRef = this.refs.holidays[dayIndex];
         
-        const offsetX = (row === 5) ? CELL_W : 0;
+        const offsetX = (row === 5 && OFFSET_LAST_ROW) ? CELL_W : 0;
         const x = px(START_X + col * CELL_W + offsetX);
         
         if ((row === 0 && col < firstDay) || dayNum > daysInMonth) {

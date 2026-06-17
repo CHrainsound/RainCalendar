@@ -4,6 +4,10 @@ import { px } from "@zos/utils";
 
 export const { width: DEVICE_WIDTH } = getDeviceInfo();
 
+export const CALENDAR_GRID_START_Y = 90;
+export const INFO_BOTTOM_Y = 410;
+export const OFFSET_LAST_ROW = true;
+
 export const CALENDAR_STYLE = {
   x: px(60),
   y: px(50),
