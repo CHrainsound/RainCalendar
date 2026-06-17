@@ -42,7 +42,7 @@
 
 2. 克隆项目
    ```bash
-   git clone <https://github.com/CHrainsound/RainCalendar>
+   git clone https://github.com/CHrainsound/RainCalendar
    cd RainCalendar
    ```
 
