@@ -7,6 +7,14 @@ const COLOR_HOLIDAY = 0xff4500;
 const COLOR_WEEKEND = 0x888888;
 const COLOR_WORKDAY = 0xffffff;
 const COLOR_LUNAR = 0x666666;
+const COLOR_TODAY = 0x00bfff;
+
+const LUNAR_YEAR_START = 1900;
+const LUNAR_YEAR_END = 2100;
+const LUNAR_BASE_DAY = 348;
+const LEAP_MONTH_MASK = 0xf;
+const LEAP_DAYS_MASK = 0x10000;
+const MONTH_DAYS_BIT = 0x8000;
 
 const LUNAR_INFO = [
   0x04bd8,0x04ae0,0x0a570,0x054d5,0x0d260,0x0d950,0x16554,0x056a0,0x09ad0,0x055d2,
@@ -37,24 +45,30 @@ const LUNAR_DAYS_CN = ["初一","初二","初三","初四","初五","初六","�
   "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
   "廿一","廿二","廿三","廿四","廿五","廿六","廿七","廿八","廿九","三十"];
 
-function lunarYearDays(y) {
-  let sum = 348;
-  for (let i = 0x8000; i > 0x8; i >>= 1) {
-    sum += (LUNAR_INFO[y - 1900] & i) !== 0 ? 1 : 0;
+function lunarYearDays(year) {
+  const yearIndex = year - LUNAR_YEAR_START;
+  let sum = LUNAR_BASE_DAY;
+  for (let i = MONTH_DAYS_BIT; i > 0x8; i >>= 1) {
+    sum += (LUNAR_INFO[yearIndex] & i) !== 0 ? 1 : 0;
   }
-  return sum + (LUNAR_INFO[y - 1900] & 0xf ? ((LUNAR_INFO[y - 1900] & 0x10000) !== 0 ? 30 : 29) : 0);
+  const leapMonth = LUNAR_INFO[yearIndex] & LEAP_MONTH_MASK;
+  if (leapMonth) {
+    sum += (LUNAR_INFO[yearIndex] & LEAP_DAYS_MASK) !== 0 ? 30 : 29;
+  }
+  return sum;
 }
 
-function monthDays(y, m) {
-  return (LUNAR_INFO[y - 1900] & (0x10000 >> m)) === 0 ? 29 : 30;
+function monthDays(year, month) {
+  const yearIndex = year - LUNAR_YEAR_START;
+  return (LUNAR_INFO[yearIndex] & (LEAP_DAYS_MASK >> month)) === 0 ? 29 : 30;
 }
 
 function solarToLunar(year, month, day) {
-  let offset = Math.floor((Date.UTC(year, month - 1, day) - Date.UTC(1900, 0, 31)) / 86400000);
+  let offset = Math.floor((Date.UTC(year, month - 1, day) - Date.UTC(LUNAR_YEAR_START, 0, 31)) / 86400000);
   let temp = 0;
-  let lunarYear = 1900;
+  let lunarYear = LUNAR_YEAR_START;
   
-  for (; lunarYear < 2100 && offset > 0; lunarYear++) {
+  for (; lunarYear < LUNAR_YEAR_END && offset > 0; lunarYear++) {
     temp = lunarYearDays(lunarYear);
     offset -= temp;
   }
@@ -64,20 +78,21 @@ function solarToLunar(year, month, day) {
     lunarYear--;
   }
   
-  const leap = LUNAR_INFO[lunarYear - 1900] & 0xf;
+  const yearIndex = lunarYear - LUNAR_YEAR_START;
+  const leapMonth = LUNAR_INFO[yearIndex] & LEAP_MONTH_MASK;
   let lunarMonth = 1;
   let isLeap = false;
   
   for (let i = 1; i <= 12 && offset >= 0; i++) {
-    if (leap > 0 && i === leap + 1 && !isLeap) {
+    if (leapMonth > 0 && i === leapMonth + 1 && !isLeap) {
       i--;
       isLeap = true;
-      temp = (LUNAR_INFO[lunarYear - 1900] & 0x10000) !== 0 ? 30 : 29;
+      temp = (LUNAR_INFO[yearIndex] & LEAP_DAYS_MASK) !== 0 ? 30 : 29;
     } else {
       temp = monthDays(lunarYear, i);
     }
     
-    if (isLeap && i === leap + 1) isLeap = false;
+    if (isLeap && i === leapMonth + 1) isLeap = false;
     offset -= temp;
     if (!isLeap) lunarMonth++;
   }
@@ -102,21 +117,22 @@ function solarToLunar(year, month, day) {
 function lunarToSolar(lunarYear, lunarMonth, lunarDay) {
   let offset = 0;
   
-  for (let i = 1900; i < lunarYear; i++) {
+  for (let i = LUNAR_YEAR_START; i < lunarYear; i++) {
     offset += lunarYearDays(i);
   }
   
-  const leapMonth = LUNAR_INFO[lunarYear - 1900] & 0xf;
+  const yearIndex = lunarYear - LUNAR_YEAR_START;
+  const leapMonth = LUNAR_INFO[yearIndex] & LEAP_MONTH_MASK;
   for (let i = 1; i < lunarMonth; i++) {
     offset += monthDays(lunarYear, i);
     if (i === leapMonth) {
-      offset += (LUNAR_INFO[lunarYear - 1900] & 0x10000) !== 0 ? 30 : 29;
+      offset += (LUNAR_INFO[yearIndex] & LEAP_DAYS_MASK) !== 0 ? 30 : 29;
     }
   }
   
   offset += lunarDay - 1;
   
-  const baseDate = new Date(1900, 0, 31);
+  const baseDate = new Date(LUNAR_YEAR_START, 0, 31);
   const resultDate = new Date(baseDate.getTime() + offset * 86400000);
   
   return {
@@ -127,10 +143,6 @@ function lunarToSolar(lunarYear, lunarMonth, lunarDay) {
 }
 
 function formatDateKey(year, month, day) {
-  return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-}
-
-function formatDateStr(year, month, day) {
   return `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
 }
 
@@ -220,30 +232,30 @@ function getHolidaysForYear(year) {
   SOLAR_TERMS.forEach(h => {
     const day = getSolarTermDay(year, h.c);
     const key = formatDateKey(year, h.month, day);
-    holidays[key] = { holiday: true, name: h.name, date: formatDateStr(year, h.month, day) };
+    holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, h.month, day) };
   });
   
   SOLAR_HOLIDAYS.forEach(h => {
     const key = formatDateKey(year, h.month, h.day);
-    holidays[key] = { holiday: true, name: h.name, date: formatDateStr(year, h.month, h.day) };
+    holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, h.month, h.day) };
   });
   
   INTERNATIONAL_HOLIDAYS.forEach(h => {
     const key = formatDateKey(year, h.month, h.day);
-    holidays[key] = { holiday: true, name: h.name, date: formatDateStr(year, h.month, h.day) };
+    holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, h.month, h.day) };
   });
   
   SPECIAL_HOLIDAYS.forEach(h => {
     const day = getNthSunday(year, h.month, h.nth);
     const key = formatDateKey(year, h.month, day);
-    holidays[key] = { holiday: true, name: h.name, date: formatDateStr(year, h.month, day) };
+    holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, h.month, day) };
   });
   
   LUNAR_HOLIDAYS.forEach(h => {
     const solarDate = lunarToSolar(year, h.month, h.day);
     if (solarDate) {
       const key = formatDateKey(year, solarDate.month, solarDate.day);
-      holidays[key] = { holiday: true, name: h.name, date: formatDateStr(year, solarDate.month, solarDate.day) };
+      holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, solarDate.month, solarDate.day) };
     }
   });
   
@@ -263,6 +275,10 @@ Page({
     this.isAnimating = false;
     this.allHolidays = [];
     this.lunarCache = {};
+    this.lunarCacheOrder = [];
+    this.maxCacheSize = 12;
+    this.holidayCache = {};
+    this.holidayStartDates = {};
   },
   build() {
     this.createWidgets();
@@ -271,15 +287,23 @@ Page({
     this.updateCalendar();
   },
 
+  cleanLunarCache() {
+    while (this.lunarCacheOrder.length > this.maxCacheSize) {
+      const oldestKey = this.lunarCacheOrder.shift();
+      delete this.lunarCache[oldestKey];
+    }
+  },
+
   buildAllHolidays() {
     this.allHolidays = [];
     this.holidayStartDates = {};
-    this.holidayCache = {};
     
     const currentYear = new Date().getFullYear();
     for (let year = currentYear - 1; year <= currentYear + 1; year++) {
-      const yearData = getHolidaysForYear(year);
-      this.holidayCache[year] = yearData;
+      if (!this.holidayCache[year]) {
+        this.holidayCache[year] = getHolidaysForYear(year);
+      }
+      const yearData = this.holidayCache[year];
       
       const nameFirstDate = {};
       
@@ -378,7 +402,10 @@ Page({
     const daysInMonth = new Date(year, month, 0).getDate();
     
     const holidayMap = {};
-    const yearHolidays = this.holidayCache[year] || getHolidaysForYear(year);
+    if (!this.holidayCache[year]) {
+      this.holidayCache[year] = getHolidaysForYear(year);
+    }
+    const yearHolidays = this.holidayCache[year];
     Object.keys(yearHolidays).forEach(key => {
       const h = yearHolidays[key];
       if (h && h.date) {
@@ -397,6 +424,8 @@ Page({
       for (let d = 1; d <= daysInMonth; d++) {
         this.lunarCache[cacheKey][d] = solarToLunar(year, month, d);
       }
+      this.lunarCacheOrder.push(cacheKey);
+      this.cleanLunarCache();
     }
     
     let dayIndex = 0;
@@ -423,7 +452,7 @@ Page({
           let color = COLOR_WORKDAY;
           let fontSize = px(22);
           if (isToday) {
-            color = 0x00bfff;
+            color = COLOR_TODAY;
             fontSize = px(30);
           } else if (isFirstDay) {
             color = COLOR_HOLIDAY;
