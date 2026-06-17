@@ -23,7 +23,7 @@
 | 平台 | 屏幕类型 | 设计宽度 |
 |------|---------|---------|
 | gt | r (圆形) | 480px |
-| gt | s (方形) | 480px |
+| gt | s (方形) | 480px |*手边没有方表，没有特别优化*
 
 **系统要求**：Zepp OS 4.0+
 
@@ -34,7 +34,7 @@
 2. 搜索 "Rain日历" 或 "RainCalendar"
 3. 点击安装
 
-### 方式二：本地开发安装
+### 方式二：本地开发安装*请确保有node.js*
 1. 安装 Zepp CLI
    ```bash
    npm install -g @zeppos/cli
@@ -42,29 +42,22 @@
 
 2. 克隆项目
    ```bash
-   git clone <repository-url>
+   git clone <https://github.com/CHrainsound/RainCalendar>
    cd RainCalendar
    ```
 
-3. 安装依赖
+3. 登录zepp账号
    ```bash
-   npm install
+   zeus login
    ```
 
-4. 启动开发模拟器
+4. 生成小程序QR码*确保当前路径为项目目录*
    ```bash
-   zepp dev
+   zeus preview
    ```
 
-5. 构建项目
-   ```bash
-   zepp build
-   ```
-
-6. 上传到设备
-   ```bash
-   zepp upload
-   ```
+5. 上传到设备
+   开发者模式扫码
 
 ## 项目结构
 
@@ -180,6 +173,7 @@ const text = getText("appName");
 - **类型支持**：@zeppos/device-types
 
 ## 版本历史
+**Todo：添加调休工作日和节假日显示**
 
 ### v1.0.1 (2026-06-17)
 - 优化代码结构，提取共享样式模块
@@ -192,22 +186,4 @@ const text = getText("appName");
 - 支持公历、农历、节日显示
 - 支持月份切换和表冠操作
 
-## 开发注意事项
 
-1. **平台适配**：布局文件使用 `.r.layout.js`（圆形）和 `.s.layout.js`（方形）后缀
-2. **资源路径**：使用 `zosLoader:./index.page.[pf].layout.js` 动态加载布局
-3. **单位转换**：使用 `px()` 函数进行像素转换
-4. **调试模式**：在 `app.json` 中设置 `debug: true` 开启调试
-
-## 许可证
-
-ISC License
-
-## 联系方式
-
-- 应用名称：Rain日历 / RainCalendar
-- 应用ID：20077
-- 版本：1.0.1
-=======
-一个Zepp os 日历小程序。支持节日农历节气显示，农历有效期到2100年，节气使用长寿公式部分年份可能有误差，Api_level=4，只针对圆形表盘优化。
->>>>>>> 399ce88107d6dda443883ef526ca41f1972000da
