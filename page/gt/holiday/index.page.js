@@ -310,7 +310,8 @@ Page({
       Object.keys(yearData).forEach(key => {
         const h = yearData[key];
         if (h && h.holiday && h.date) {
-          const d = new Date(h.date);
+          const parts = h.date.split('-');
+          const d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
           if (!nameFirstDate[h.name] || d < nameFirstDate[h.name]) {
             nameFirstDate[h.name] = d;
           }
