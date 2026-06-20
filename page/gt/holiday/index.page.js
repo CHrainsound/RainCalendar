@@ -252,7 +252,11 @@ function getHolidaysForYear(year) {
   });
   
   LUNAR_HOLIDAYS.forEach(h => {
-    const solarDate = lunarToSolar(year, h.month, h.day);
+    let day = h.day;
+    if (h.name === "除夕") {
+      day = monthDays(year, h.month);
+    }
+    const solarDate = lunarToSolar(year, h.month, day);
     if (solarDate) {
       const key = formatDateKey(year, solarDate.month, solarDate.day);
       holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, solarDate.month, solarDate.day) };
