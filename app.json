@@ -5,8 +5,8 @@
     "appName": "RainCalendar",
     "appType": "app",
     "version": {
-      "code": 3,
-      "name": "1.0.3"
+      "code": 4,
+      "name": "1.1.0"
     },
     "icon": "icon.png",
     "vender": "zepp",
@@ -14,8 +14,7 @@
   },
   "permissions": [
     "data:os.device.info",
-    "device:os.local_storage",
-    "data:os.network"
+    "device:os.local_storage"
   ],
   "runtime": {
     "apiVersion": {
@@ -24,13 +23,32 @@
       "minVersion": "4.0"
     }
   },
-  "debug": false,
   "targets": {
     "gt": {
       "module": {
         "page": {
           "pages": [
             "page/gt/holiday/index.page"
+          ]
+        },
+        "app-widget": {
+          "widgets": [
+            {
+              "path": "page/gt/app-widget/index",
+              "icon": "icon.png",
+              "runtime": {
+                "type": "js"
+              },
+              "name": "Holiday Card",
+              "i18n": {
+                "en-US": {
+                  "name": "Holiday Card"
+                },
+                "zh-CN": {
+                  "name": "节日卡片"
+                }
+              }
+            }
           ]
         }
       },
@@ -155,7 +173,11 @@
       "holiday_halloween": "Halloween",
       "holiday_singles_day": "Singles Day",
       "holiday_christmas_eve": "Christmas Eve",
-      "holiday_christmas": "Christmas"
+      "holiday_christmas": "Christmas",
+      "widget_today": "Today",
+      "widget_days_unit": " days",
+      "widget_no_data": "No upcoming holiday",
+      "widget_next_holiday": "%s in %d days"
     },
     "zh-CN": {
       "appName": "雨声日历",
@@ -266,7 +288,11 @@
       "holiday_halloween": "万圣节",
       "holiday_singles_day": "光棍节",
       "holiday_christmas_eve": "平安夜",
-      "holiday_christmas": "圣诞节"
+      "holiday_christmas": "圣诞节",
+      "widget_today": "今日",
+      "widget_days_unit": "天",
+      "widget_no_data": "暂无节假日",
+      "widget_next_holiday": "距 %s %d天"
     }
   },
   "defaultLanguage": "en-US"

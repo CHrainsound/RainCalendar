@@ -324,3 +324,15 @@ msgstr "Christmas Eve"
 
 msgid "holiday_christmas"
 msgstr "Christmas"
+
+msgid "widget_today"
+msgstr "Today"
+
+msgid "widget_days_unit"
+msgstr " days"
+
+msgid "widget_no_data"
+msgstr "No upcoming holiday"
+
+msgid "widget_next_holiday"
+msgstr "%s in %d days"

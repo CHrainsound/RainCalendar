@@ -28,7 +28,7 @@ export const INFO_STYLE = {
   text_size: px(22),
   align_h: ui.align.CENTER_H,
   align_v: ui.align.CENTER_V,
-  text_style: 2
+  text_style: ui.text_style.WRAP
 };
 
 export function createBtnStyle(btnX) {

@@ -324,3 +324,15 @@ msgstr "平安夜"
 
 msgid "holiday_christmas"
 msgstr "圣诞节"
+
+msgid "widget_today"
+msgstr "今日"
+
+msgid "widget_days_unit"
+msgstr "天"
+
+msgid "widget_no_data"
+msgstr "暂无节假日"
+
+msgid "widget_next_holiday"
+msgstr "距 %s %d天"
