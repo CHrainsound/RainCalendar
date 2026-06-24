@@ -1,5 +1,5 @@
 msgid "appName"
-msgstr "Rain日历"
+msgstr "雨声日历"
 
 msgid "holidayTitle"
 msgstr "节日日历"
