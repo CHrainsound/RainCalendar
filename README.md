@@ -147,7 +147,7 @@ const INTERNATIONAL_HOLIDAYS = [
 
 ```po
 msgid "appName"
-msgstr "Rain日历"
+msgstr "雨声日历"
 ```
 
 在代码中使用：
