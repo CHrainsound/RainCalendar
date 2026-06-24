@@ -1,5 +1,5 @@
 msgid "appName"
-msgstr "Hello World Zepp OS4"
+msgstr "RainCalendar"
 
 msgid "holidayTitle"
 msgstr "Holiday Calendar"
@@ -12,3 +12,315 @@ msgstr "Failed to load"
 
 msgid "noData"
 msgstr "No holiday data"
+
+msgid "weekday_sun"
+msgstr "Sun"
+
+msgid "weekday_mon"
+msgstr "Mon"
+
+msgid "weekday_tue"
+msgstr "Tue"
+
+msgid "weekday_wed"
+msgstr "Wed"
+
+msgid "weekday_thu"
+msgstr "Thu"
+
+msgid "weekday_fri"
+msgstr "Fri"
+
+msgid "weekday_sat"
+msgstr "Sat"
+
+msgid "todayIs"
+msgstr "Today: %s"
+
+msgid "nextHoliday"
+msgstr "Next: %s\n%d days left"
+
+msgid "noHolidayData"
+msgstr "No holiday data"
+
+msgid "lunar_month_1"
+msgstr "1st Month"
+
+msgid "lunar_month_2"
+msgstr "2nd Month"
+
+msgid "lunar_month_3"
+msgstr "3rd Month"
+
+msgid "lunar_month_4"
+msgstr "4th Month"
+
+msgid "lunar_month_5"
+msgstr "5th Month"
+
+msgid "lunar_month_6"
+msgstr "6th Month"
+
+msgid "lunar_month_7"
+msgstr "7th Month"
+
+msgid "lunar_month_8"
+msgstr "8th Month"
+
+msgid "lunar_month_9"
+msgstr "9th Month"
+
+msgid "lunar_month_10"
+msgstr "10th Month"
+
+msgid "lunar_month_11"
+msgstr "11th Month"
+
+msgid "lunar_month_12"
+msgstr "12th Month"
+
+msgid "lunar_day_1"
+msgstr "1st"
+
+msgid "lunar_day_2"
+msgstr "2nd"
+
+msgid "lunar_day_3"
+msgstr "3rd"
+
+msgid "lunar_day_4"
+msgstr "4th"
+
+msgid "lunar_day_5"
+msgstr "5th"
+
+msgid "lunar_day_6"
+msgstr "6th"
+
+msgid "lunar_day_7"
+msgstr "7th"
+
+msgid "lunar_day_8"
+msgstr "8th"
+
+msgid "lunar_day_9"
+msgstr "9th"
+
+msgid "lunar_day_10"
+msgstr "10th"
+
+msgid "lunar_day_11"
+msgstr "11th"
+
+msgid "lunar_day_12"
+msgstr "12th"
+
+msgid "lunar_day_13"
+msgstr "13th"
+
+msgid "lunar_day_14"
+msgstr "14th"
+
+msgid "lunar_day_15"
+msgstr "15th"
+
+msgid "lunar_day_16"
+msgstr "16th"
+
+msgid "lunar_day_17"
+msgstr "17th"
+
+msgid "lunar_day_18"
+msgstr "18th"
+
+msgid "lunar_day_19"
+msgstr "19th"
+
+msgid "lunar_day_20"
+msgstr "20th"
+
+msgid "lunar_day_21"
+msgstr "21st"
+
+msgid "lunar_day_22"
+msgstr "22nd"
+
+msgid "lunar_day_23"
+msgstr "23rd"
+
+msgid "lunar_day_24"
+msgstr "24th"
+
+msgid "lunar_day_25"
+msgstr "25th"
+
+msgid "lunar_day_26"
+msgstr "26th"
+
+msgid "lunar_day_27"
+msgstr "27th"
+
+msgid "lunar_day_28"
+msgstr "28th"
+
+msgid "lunar_day_29"
+msgstr "29th"
+
+msgid "lunar_day_30"
+msgstr "30th"
+
+msgid "holiday_new_year"
+msgstr "New Year's Day"
+
+msgid "holiday_labor_day"
+msgstr "Labor Day"
+
+msgid "holiday_national_day"
+msgstr "National Day"
+
+msgid "holiday_spring_festival"
+msgstr "Spring Festival"
+
+msgid "holiday_lantern"
+msgstr "Lantern Festival"
+
+msgid "holiday_dragon_boat"
+msgstr "Dragon Boat Festival"
+
+msgid "holiday_mid_autumn"
+msgstr "Mid-Autumn Festival"
+
+msgid "holiday_double_ninth"
+msgstr "Double Ninth Festival"
+
+msgid "holiday_new_years_eve"
+msgstr "New Year's Eve"
+
+msgid "term_minor_cold"
+msgstr "Minor Cold"
+
+msgid "term_major_cold"
+msgstr "Major Cold"
+
+msgid "term_start_of_spring"
+msgstr "Start of Spring"
+
+msgid "term_rain_water"
+msgstr "Rain Water"
+
+msgid "term_insects_awaken"
+msgstr "Insects Awaken"
+
+msgid "term_spring_equinox"
+msgstr "Spring Equinox"
+
+msgid "term_clear_and_bright"
+msgstr "Clear and Bright"
+
+msgid "term_grain_rain"
+msgstr "Grain Rain"
+
+msgid "term_start_of_summer"
+msgstr "Start of Summer"
+
+msgid "term_grain_buds"
+msgstr "Grain Buds"
+
+msgid "term_grain_in_ear"
+msgstr "Grain in Ear"
+
+msgid "term_summer_solstice"
+msgstr "Summer Solstice"
+
+msgid "term_minor_heat"
+msgstr "Minor Heat"
+
+msgid "term_major_heat"
+msgstr "Major Heat"
+
+msgid "term_start_of_autumn"
+msgstr "Start of Autumn"
+
+msgid "term_end_of_heat"
+msgstr "End of Heat"
+
+msgid "term_white_dew"
+msgstr "White Dew"
+
+msgid "term_autumn_equinox"
+msgstr "Autumn Equinox"
+
+msgid "term_cold_dew"
+msgstr "Cold Dew"
+
+msgid "term_frosts_descent"
+msgstr "Frost's Descent"
+
+msgid "term_start_of_winter"
+msgstr "Start of Winter"
+
+msgid "term_minor_snow"
+msgstr "Minor Snow"
+
+msgid "term_major_snow"
+msgstr "Major Snow"
+
+msgid "term_winter_solstice"
+msgstr "Winter Solstice"
+
+msgid "holiday_mothers_day"
+msgstr "Mother's Day"
+
+msgid "holiday_fathers_day"
+msgstr "Father's Day"
+
+msgid "holiday_police_day"
+msgstr "Police Day"
+
+msgid "holiday_valentines"
+msgstr "Valentine's Day"
+
+msgid "holiday_womens_day"
+msgstr "Women's Day"
+
+msgid "holiday_arbor_day"
+msgstr "Arbor Day"
+
+msgid "holiday_consumer_rights"
+msgstr "Consumer Rights Day"
+
+msgid "holiday_april_fools"
+msgstr "April Fools' Day"
+
+msgid "holiday_earth_day"
+msgstr "Earth Day"
+
+msgid "holiday_youth_day"
+msgstr "Youth Day"
+
+msgid "holiday_nurses_day"
+msgstr "Nurses Day"
+
+msgid "holiday_childrens_day"
+msgstr "Children's Day"
+
+msgid "holiday_party_day"
+msgstr "Party Day"
+
+msgid "holiday_army_day"
+msgstr "Army Day"
+
+msgid "holiday_teachers_day"
+msgstr "Teachers Day"
+
+msgid "holiday_halloween"
+msgstr "Halloween"
+
+msgid "holiday_singles_day"
+msgstr "Singles Day"
+
+msgid "holiday_christmas_eve"
+msgstr "Christmas Eve"
+
+msgid "holiday_christmas"
+msgstr "Christmas"

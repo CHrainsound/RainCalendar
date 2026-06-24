@@ -12,3 +12,315 @@ msgstr "加载失败"
 
 msgid "noData"
 msgstr "暂无节日数据"
+
+msgid "weekday_sun"
+msgstr "日"
+
+msgid "weekday_mon"
+msgstr "一"
+
+msgid "weekday_tue"
+msgstr "二"
+
+msgid "weekday_wed"
+msgstr "三"
+
+msgid "weekday_thu"
+msgstr "四"
+
+msgid "weekday_fri"
+msgstr "五"
+
+msgid "weekday_sat"
+msgstr "六"
+
+msgid "todayIs"
+msgstr "今天：%s"
+
+msgid "nextHoliday"
+msgstr "下一个：%s\n还有%d天"
+
+msgid "noHolidayData"
+msgstr "暂无节假日数据"
+
+msgid "lunar_month_1"
+msgstr "正月"
+
+msgid "lunar_month_2"
+msgstr "二月"
+
+msgid "lunar_month_3"
+msgstr "三月"
+
+msgid "lunar_month_4"
+msgstr "四月"
+
+msgid "lunar_month_5"
+msgstr "五月"
+
+msgid "lunar_month_6"
+msgstr "六月"
+
+msgid "lunar_month_7"
+msgstr "七月"
+
+msgid "lunar_month_8"
+msgstr "八月"
+
+msgid "lunar_month_9"
+msgstr "九月"
+
+msgid "lunar_month_10"
+msgstr "十月"
+
+msgid "lunar_month_11"
+msgstr "冬月"
+
+msgid "lunar_month_12"
+msgstr "腊月"
+
+msgid "lunar_day_1"
+msgstr "初一"
+
+msgid "lunar_day_2"
+msgstr "初二"
+
+msgid "lunar_day_3"
+msgstr "初三"
+
+msgid "lunar_day_4"
+msgstr "初四"
+
+msgid "lunar_day_5"
+msgstr "初五"
+
+msgid "lunar_day_6"
+msgstr "初六"
+
+msgid "lunar_day_7"
+msgstr "初七"
+
+msgid "lunar_day_8"
+msgstr "初八"
+
+msgid "lunar_day_9"
+msgstr "初九"
+
+msgid "lunar_day_10"
+msgstr "初十"
+
+msgid "lunar_day_11"
+msgstr "十一"
+
+msgid "lunar_day_12"
+msgstr "十二"
+
+msgid "lunar_day_13"
+msgstr "十三"
+
+msgid "lunar_day_14"
+msgstr "十四"
+
+msgid "lunar_day_15"
+msgstr "十五"
+
+msgid "lunar_day_16"
+msgstr "十六"
+
+msgid "lunar_day_17"
+msgstr "十七"
+
+msgid "lunar_day_18"
+msgstr "十八"
+
+msgid "lunar_day_19"
+msgstr "十九"
+
+msgid "lunar_day_20"
+msgstr "二十"
+
+msgid "lunar_day_21"
+msgstr "廿一"
+
+msgid "lunar_day_22"
+msgstr "廿二"
+
+msgid "lunar_day_23"
+msgstr "廿三"
+
+msgid "lunar_day_24"
+msgstr "廿四"
+
+msgid "lunar_day_25"
+msgstr "廿五"
+
+msgid "lunar_day_26"
+msgstr "廿六"
+
+msgid "lunar_day_27"
+msgstr "廿七"
+
+msgid "lunar_day_28"
+msgstr "廿八"
+
+msgid "lunar_day_29"
+msgstr "廿九"
+
+msgid "lunar_day_30"
+msgstr "三十"
+
+msgid "holiday_new_year"
+msgstr "元旦"
+
+msgid "holiday_labor_day"
+msgstr "劳动节"
+
+msgid "holiday_national_day"
+msgstr "国庆节"
+
+msgid "holiday_spring_festival"
+msgstr "春节"
+
+msgid "holiday_lantern"
+msgstr "元宵"
+
+msgid "holiday_dragon_boat"
+msgstr "端午"
+
+msgid "holiday_mid_autumn"
+msgstr "中秋"
+
+msgid "holiday_double_ninth"
+msgstr "重阳"
+
+msgid "holiday_new_years_eve"
+msgstr "除夕"
+
+msgid "term_minor_cold"
+msgstr "小寒"
+
+msgid "term_major_cold"
+msgstr "大寒"
+
+msgid "term_start_of_spring"
+msgstr "立春"
+
+msgid "term_rain_water"
+msgstr "雨水"
+
+msgid "term_insects_awaken"
+msgstr "惊蛰"
+
+msgid "term_spring_equinox"
+msgstr "春分"
+
+msgid "term_clear_and_bright"
+msgstr "清明"
+
+msgid "term_grain_rain"
+msgstr "谷雨"
+
+msgid "term_start_of_summer"
+msgstr "立夏"
+
+msgid "term_grain_buds"
+msgstr "小满"
+
+msgid "term_grain_in_ear"
+msgstr "芒种"
+
+msgid "term_summer_solstice"
+msgstr "夏至"
+
+msgid "term_minor_heat"
+msgstr "小暑"
+
+msgid "term_major_heat"
+msgstr "大暑"
+
+msgid "term_start_of_autumn"
+msgstr "立秋"
+
+msgid "term_end_of_heat"
+msgstr "处暑"
+
+msgid "term_white_dew"
+msgstr "白露"
+
+msgid "term_autumn_equinox"
+msgstr "秋分"
+
+msgid "term_cold_dew"
+msgstr "寒露"
+
+msgid "term_frosts_descent"
+msgstr "霜降"
+
+msgid "term_start_of_winter"
+msgstr "立冬"
+
+msgid "term_minor_snow"
+msgstr "小雪"
+
+msgid "term_major_snow"
+msgstr "大雪"
+
+msgid "term_winter_solstice"
+msgstr "冬至"
+
+msgid "holiday_mothers_day"
+msgstr "母亲节"
+
+msgid "holiday_fathers_day"
+msgstr "父亲节"
+
+msgid "holiday_police_day"
+msgstr "警察节"
+
+msgid "holiday_valentines"
+msgstr "情人节"
+
+msgid "holiday_womens_day"
+msgstr "妇女节"
+
+msgid "holiday_arbor_day"
+msgstr "植树节"
+
+msgid "holiday_consumer_rights"
+msgstr "消费者权益日"
+
+msgid "holiday_april_fools"
+msgstr "愚人节"
+
+msgid "holiday_earth_day"
+msgstr "地球日"
+
+msgid "holiday_youth_day"
+msgstr "青年节"
+
+msgid "holiday_nurses_day"
+msgstr "护士节"
+
+msgid "holiday_childrens_day"
+msgstr "儿童节"
+
+msgid "holiday_party_day"
+msgstr "建党节"
+
+msgid "holiday_army_day"
+msgstr "建军节"
+
+msgid "holiday_teachers_day"
+msgstr "教师节"
+
+msgid "holiday_halloween"
+msgstr "万圣节"
+
+msgid "holiday_singles_day"
+msgstr "光棍节"
+
+msgid "holiday_christmas_eve"
+msgstr "平安夜"
+
+msgid "holiday_christmas"
+msgstr "圣诞节"
