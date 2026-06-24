@@ -2,6 +2,7 @@ import ui from "@zos/ui";
 import { onDigitalCrown, offDigitalCrown, KEY_HOME } from "@zos/interaction";
 import { CALENDAR_STYLE, INFO_STYLE, BTN_PREV_STYLE, BTN_NEXT_STYLE, CALENDAR_GRID_START_Y, OFFSET_LAST_ROW } from "zosLoader:./index.page.[pf].layout.js";
 import { px } from "@zos/utils";
+import { getText } from "@zos/i18n";
 
 const COLOR_HOLIDAY = 0xff4500;
 const COLOR_WEEKEND = 0x888888;
@@ -40,10 +41,10 @@ const LUNAR_INFO = [
   0x0d520
 ];
 
-const LUNAR_MONTHS_CN = ["正月","二月","三月","四月","五月","六月","七月","八月","九月","十月","冬月","腊月"];
-const LUNAR_DAYS_CN = ["初一","初二","初三","初四","初五","初六","初七","初八","初九","初十",
-  "十一","十二","十三","十四","十五","十六","十七","十八","十九","二十",
-  "廿一","廿二","廿三","廿四","廿五","廿六","廿七","廿八","廿九","三十"];
+const LUNAR_MONTHS = ["lunar_month_1","lunar_month_2","lunar_month_3","lunar_month_4","lunar_month_5","lunar_month_6","lunar_month_7","lunar_month_8","lunar_month_9","lunar_month_10","lunar_month_11","lunar_month_12"];
+const LUNAR_DAYS = ["lunar_day_1","lunar_day_2","lunar_day_3","lunar_day_4","lunar_day_5","lunar_day_6","lunar_day_7","lunar_day_8","lunar_day_9","lunar_day_10",
+  "lunar_day_11","lunar_day_12","lunar_day_13","lunar_day_14","lunar_day_15","lunar_day_16","lunar_day_17","lunar_day_18","lunar_day_19","lunar_day_20",
+  "lunar_day_21","lunar_day_22","lunar_day_23","lunar_day_24","lunar_day_25","lunar_day_26","lunar_day_27","lunar_day_28","lunar_day_29","lunar_day_30"];
 
 function lunarYearDays(year) {
   const yearIndex = year - LUNAR_YEAR_START;
@@ -109,8 +110,8 @@ function solarToLunar(year, month, day) {
     month: monthIndex,
     day: lunarDay,
     isFirst: lunarDay === 1,
-    monthText: LUNAR_MONTHS_CN[monthIndex],
-    dayText: LUNAR_DAYS_CN[lunarDay - 1]
+    monthKey: LUNAR_MONTHS[monthIndex],
+    dayKey: LUNAR_DAYS[lunarDay - 1]
   };
 }
 
@@ -147,45 +148,45 @@ function formatDateKey(year, month, day) {
 }
 
 const SOLAR_HOLIDAYS = [
-  { month: 1, day: 1, name: "元旦" },
-  { month: 5, day: 1, name: "劳动节" },
-  { month: 10, day: 1, name: "国庆节" }
+  { month: 1, day: 1, name: "holiday_new_year" },
+  { month: 5, day: 1, name: "holiday_labor_day" },
+  { month: 10, day: 1, name: "holiday_national_day" }
 ];
 
 const LUNAR_HOLIDAYS = [
-  { month: 1, day: 1, name: "春节" },
-  { month: 1, day: 15, name: "元宵" },
-  { month: 5, day: 5, name: "端午" },
-  { month: 8, day: 15, name: "中秋" },
-  { month: 9, day: 9, name: "重阳" },
-  { month: 12, day: 30, name: "除夕" }
+  { month: 1, day: 1, name: "holiday_spring_festival" },
+  { month: 1, day: 15, name: "holiday_lantern" },
+  { month: 5, day: 5, name: "holiday_dragon_boat" },
+  { month: 8, day: 15, name: "holiday_mid_autumn" },
+  { month: 9, day: 9, name: "holiday_double_ninth" },
+  { month: 12, day: 30, name: "holiday_new_years_eve" }
 ];
 
 const SOLAR_TERMS = [
-  { month: 1, name: "小寒", c: 5.37 },
-  { month: 1, name: "大寒", c: 20.12 },
-  { month: 2, name: "立春", c: 3.87 },
-  { month: 2, name: "雨水", c: 18.73 },
-  { month: 3, name: "惊蛰", c: 5.63 },
-  { month: 3, name: "春分", c: 20.646 },
-  { month: 4, name: "清明", c: 4.81 },
-  { month: 4, name: "谷雨", c: 20.1 },
-  { month: 5, name: "立夏", c: 5.52 },
-  { month: 5, name: "小满", c: 21.04 },
-  { month: 6, name: "芒种", c: 5.678 },
-  { month: 6, name: "夏至", c: 21.37 },
-  { month: 7, name: "小暑", c: 7.108 },
-  { month: 7, name: "大暑", c: 22.83 },
-  { month: 8, name: "立秋", c: 7.5 },
-  { month: 8, name: "处暑", c: 23.13 },
-  { month: 9, name: "白露", c: 7.646 },
-  { month: 9, name: "秋分", c: 23.042 },
-  { month: 10, name: "寒露", c: 8.318 },
-  { month: 10, name: "霜降", c: 23.438 },
-  { month: 11, name: "立冬", c: 7.438 },
-  { month: 11, name: "小雪", c: 22.36 },
-  { month: 12, name: "大雪", c: 7.18 },
-  { month: 12, name: "冬至", c: 21.94 }
+  { month: 1, name: "term_minor_cold", c: 5.37 },
+  { month: 1, name: "term_major_cold", c: 20.12 },
+  { month: 2, name: "term_start_of_spring", c: 3.87 },
+  { month: 2, name: "term_rain_water", c: 18.73 },
+  { month: 3, name: "term_insects_awaken", c: 5.63 },
+  { month: 3, name: "term_spring_equinox", c: 20.646 },
+  { month: 4, name: "term_clear_and_bright", c: 4.81 },
+  { month: 4, name: "term_grain_rain", c: 20.1 },
+  { month: 5, name: "term_start_of_summer", c: 5.52 },
+  { month: 5, name: "term_grain_buds", c: 21.04 },
+  { month: 6, name: "term_grain_in_ear", c: 5.678 },
+  { month: 6, name: "term_summer_solstice", c: 21.37 },
+  { month: 7, name: "term_minor_heat", c: 7.108 },
+  { month: 7, name: "term_major_heat", c: 22.83 },
+  { month: 8, name: "term_start_of_autumn", c: 7.5 },
+  { month: 8, name: "term_end_of_heat", c: 23.13 },
+  { month: 9, name: "term_white_dew", c: 7.646 },
+  { month: 9, name: "term_autumn_equinox", c: 23.042 },
+  { month: 10, name: "term_cold_dew", c: 8.318 },
+  { month: 10, name: "term_frosts_descent", c: 23.438 },
+  { month: 11, name: "term_start_of_winter", c: 7.438 },
+  { month: 11, name: "term_minor_snow", c: 22.36 },
+  { month: 12, name: "term_major_snow", c: 7.18 },
+  { month: 12, name: "term_winter_solstice", c: 21.94 }
 ];
 
 function getSolarTermDay(year, c) {
@@ -202,28 +203,28 @@ function getNthSunday(year, month, n) {
 }
 
 const SPECIAL_HOLIDAYS = [
-  { month: 5, name: "母亲节", nth: 2 },
-  { month: 6, name: "父亲节", nth: 3 }
+  { month: 5, name: "holiday_mothers_day", nth: 2 },
+  { month: 6, name: "holiday_fathers_day", nth: 3 }
 ];
 
 const INTERNATIONAL_HOLIDAYS = [
-  { month: 1, day: 10, name: "警察节" },
-  { month: 2, day: 14, name: "情人节" },
-  { month: 3, day: 8, name: "妇女节" },
-  { month: 3, day: 12, name: "植树节" },
-  { month: 3, day: 15, name: "消费者权益日" },
-  { month: 4, day: 1, name: "愚人节" },
-  { month: 4, day: 22, name: "地球日" },
-  { month: 5, day: 4, name: "青年节" },
-  { month: 5, day: 12, name: "护士节" },
-  { month: 6, day: 1, name: "儿童节" },
-  { month: 7, day: 1, name: "建党节" },
-  { month: 8, day: 1, name: "建军节" },
-  { month: 9, day: 10, name: "教师节" },
-  { month: 10, day: 31, name: "万圣节" },
-  { month: 11, day: 11, name: "光棍节" },
-  { month: 12, day: 24, name: "平安夜" },
-  { month: 12, day: 25, name: "圣诞节" }
+  { month: 1, day: 10, name: "holiday_police_day" },
+  { month: 2, day: 14, name: "holiday_valentines" },
+  { month: 3, day: 8, name: "holiday_womens_day" },
+  { month: 3, day: 12, name: "holiday_arbor_day" },
+  { month: 3, day: 15, name: "holiday_consumer_rights" },
+  { month: 4, day: 1, name: "holiday_april_fools" },
+  { month: 4, day: 22, name: "holiday_earth_day" },
+  { month: 5, day: 4, name: "holiday_youth_day" },
+  { month: 5, day: 12, name: "holiday_nurses_day" },
+  { month: 6, day: 1, name: "holiday_childrens_day" },
+  { month: 7, day: 1, name: "holiday_party_day" },
+  { month: 8, day: 1, name: "holiday_army_day" },
+  { month: 9, day: 10, name: "holiday_teachers_day" },
+  { month: 10, day: 31, name: "holiday_halloween" },
+  { month: 11, day: 11, name: "holiday_singles_day" },
+  { month: 12, day: 24, name: "holiday_christmas_eve" },
+  { month: 12, day: 25, name: "holiday_christmas" }
 ];
 
 function getHolidaysForYear(year) {
@@ -253,13 +254,13 @@ function getHolidaysForYear(year) {
   
   LUNAR_HOLIDAYS.forEach(h => {
     let day = h.day;
-    if (h.name === "除夕") {
+    if (h.name === "holiday_new_years_eve") {
       day = monthDays(year, h.month);
     }
     const solarDate = lunarToSolar(year, h.month, day);
     if (solarDate) {
-      const key = formatDateKey(year, solarDate.month, solarDate.day);
-      holidays[key] = { holiday: true, name: h.name, date: formatDateKey(year, solarDate.month, solarDate.day) };
+      const key = formatDateKey(solarDate.year, solarDate.month, solarDate.day);
+      holidays[key] = { holiday: true, name: h.name, date: formatDateKey(solarDate.year, solarDate.month, solarDate.day) };
     }
   });
   
@@ -270,6 +271,8 @@ const CELL_W = 62;
 const CELL_H = 50;
 const START_X = 240 - (CELL_W * 7) / 2 + 2;
 const START_Y = CALENDAR_GRID_START_Y;
+
+const WEEKDAY_KEYS = ["weekday_sun", "weekday_mon", "weekday_tue", "weekday_wed", "weekday_thu", "weekday_fri", "weekday_sat"];
 
 Page({
   onInit() {
@@ -325,7 +328,7 @@ Page({
       Object.keys(nameFirstDate).forEach(name => {
         const d = nameFirstDate[name];
         const dateKey = `${d.getMonth() + 1}-${d.getDate()}`;
-        this.holidayStartDates[`${year}-${dateKey}`] = name;
+        this.holidayStartDates[`${d.getFullYear()}-${dateKey}`] = name;
         this.allHolidays.push({ date: d, name: name });
       });
     }
@@ -336,14 +339,12 @@ Page({
   createWidgets() {
     this.refs.title = ui.createWidget(ui.widget.TEXT, CALENDAR_STYLE);
     
-    const weekDays = ["日", "一", "二", "三", "四", "五", "六"];
-    
-    weekDays.forEach((day, i) => {
+    WEEKDAY_KEYS.forEach((key, i) => {
       ui.createWidget(ui.widget.TEXT, {
         x: px(START_X + i * CELL_W), y: px(START_Y),
         w: px(CELL_W), h: px(CELL_H),
         color: 0x888888, text_size: px(22),
-        align_h: ui.align.CENTER_H, align_v: ui.align.CENTER_V, text: day
+        align_h: ui.align.CENTER_H, align_v: ui.align.CENTER_V, text: getText(key)
       });
     });
     
@@ -421,7 +422,7 @@ Page({
       }
     });
     
-    this.refs.title.setProperty(ui.prop.MORE, { text: `${year}年${month}月` });
+    this.refs.title.setProperty(ui.prop.MORE, { text: `${year}/${String(month).padStart(2, '0')}` });
     
     const cacheKey = `${year}-${month}`;
     if (!this.lunarCache[cacheKey]) {
@@ -468,11 +469,11 @@ Page({
           dayRef.setProperty(ui.prop.MORE, { text: String(dayNum), color: color, text_size: fontSize, x: x });
           
           const lunar = this.lunarCache[cacheKey][dayNum];
-          let lunarText = lunar.isFirst ? lunar.monthText : lunar.dayText;
+          let lunarText = lunar.isFirst ? getText(lunar.monthKey) : getText(lunar.dayKey);
           let lunarColor = COLOR_LUNAR;
           
           if (isFirstDay) {
-            lunarText = this.holidayStartDates[dateKey];
+            lunarText = getText(this.holidayStartDates[dateKey]);
             lunarColor = COLOR_HOLIDAY;
           }
           
@@ -491,7 +492,7 @@ Page({
   updateInfo(holidayMap, isCurrentMonth, today) {
     const todayHoliday = holidayMap[today];
     if (isCurrentMonth && todayHoliday && todayHoliday.holiday) {
-      this.refs.info.setProperty(ui.prop.MORE, { text: `今天：${todayHoliday.name}` });
+      this.refs.info.setProperty(ui.prop.MORE, { text: getText("todayIs").replace("%s", getText(todayHoliday.name)) });
       return;
     }
     
@@ -501,12 +502,12 @@ Page({
     for (const h of this.allHolidays) {
       if (h.date > now) {
         const diff = Math.ceil((h.date - now) / 86400000);
-        this.refs.info.setProperty(ui.prop.MORE, { text: `下一个：${h.name}\n还有${diff}天` });
+        this.refs.info.setProperty(ui.prop.MORE, { text: getText("nextHoliday").replace("%s", getText(h.name)).replace("%d", diff) });
         return;
       }
     }
     
-    this.refs.info.setProperty(ui.prop.MORE, { text: "暂无节假日数据" });
+    this.refs.info.setProperty(ui.prop.MORE, { text: getText("noHolidayData") });
   },
 
   enableCrown() {
