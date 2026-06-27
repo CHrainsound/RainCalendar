@@ -1,5 +1,4 @@
 import ui from "@zos/ui";
-import { push } from "@zos/router";
 import { getText } from "@zos/i18n";
 import { setAppWidgetSize } from "@zos/ui";
 import { solarToLunar, getHolidaysForYear, formatDateKey, LUNAR_MONTHS, LUNAR_DAYS } from "../shared/calendar.js";
@@ -23,20 +22,14 @@ AppWidget({
       const todayText = this.getTodayText(year, month, day);
       const nextText = this.getNextHolidayText(year, month, day);
       
-      const clickFunc = () => {
-        push({ url: "page/gt/holiday/index.page" });
-      };
-      
       this.refs.title = ui.createWidget(ui.widget.TEXT, {
         ...TITLE_STYLE,
-        text: getText("widget_today"),
-        click_func: clickFunc
+        text: getText("widget_today")
       });
       
       this.refs.today = ui.createWidget(ui.widget.TEXT, {
         ...TODAY_STYLE,
-        text: todayText,
-        click_func: clickFunc
+        text: todayText
       });
       
       this.refs.line = ui.createWidget(ui.widget.FILL_RECT, {
@@ -45,8 +38,7 @@ AppWidget({
       
       this.refs.next = ui.createWidget(ui.widget.TEXT, {
         ...NEXT_HOLIDAY_STYLE,
-        text: nextText,
-        click_func: clickFunc
+        text: nextText
       });
     } catch (e) {
       console.log("AppWidget build error:", e);
